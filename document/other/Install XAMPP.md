@@ -44,6 +44,7 @@ Chào các bạn sinh viên! Trong bài hướng dẫn này, tôi sẽ hướng 
 1. Tạo một thư mục mới trên máy tính của bạn để lưu trữ dự án PHP của bạn. Ví dụ: `C:\xampp\htdocs\my_project`.
 1. Mở Notepad hoặc trình soạn thảo văn bản yêu thích của bạn.
 1. Tạo một 2 mới với tên `index.php` và `myname.php` và lưu nó vào thư mục my_project.
+1. Các phần code dưới đây được lưu ở thư mục `source/task1/my_project` của dự án này trên github bạn có thể copy để vào XAMPP và chạy thử hoặc tự gõ lệnh để dễ nhớ.
 ![File](../../assets/image/image9.png)
 1. Thêm mã PHP sau vào tệp `index.php`:
 
@@ -60,10 +61,10 @@ Chào các bạn sinh viên! Trong bài hướng dẫn này, tôi sẽ hướng 
 ?>
 ```
 
-5. Lưu tệp `index.php` và `myname.php`.
-6. Mở trình duyệt web của bạn.
-7. Nhập địa chỉ sau vào thanh địa chỉ: `http://localhost/my_project/index.php` và `http://localhost/my_project/myname.php`
-8. Trang web sẽ hiển thị văn bản bạn vừa nhập.
+1. Lưu tệp `index.php` và `myname.php`.
+1. Mở trình duyệt web của bạn.
+1. Nhập địa chỉ sau vào thanh địa chỉ: `http://localhost/my_project/index.php` và `http://localhost/my_project/myname.php`
+1. Trang web sẽ hiển thị văn bản bạn vừa nhập.
 ![Web show](../../assets/image/image10.png)
 
 > Lưu ý thêm: Với các file có tên là index.php bạn chỉ cần nhập đến tên thư mục chứa nó, file index.php bên trong thư mục đó sẽ tự chạy. Ví dụ nếu bạn vào đường link `http://localhost/my_project/` thì sẽ có kết quả tương tự `http://localhost/my_project/index.php`
