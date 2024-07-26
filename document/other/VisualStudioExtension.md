@@ -1,0 +1,7 @@
+https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-extension-pack
+https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client
+https://marketplace.visualstudio.com/items?itemName=kokororin.vscode-phpfmt
+https://marketplace.visualstudio.com/items?itemName=cvergne.vscode-php-getters-setters-cv
+https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-blade
+https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel5-snippets
+https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter
