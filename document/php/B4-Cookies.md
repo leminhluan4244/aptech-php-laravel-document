@@ -44,6 +44,17 @@ Cookie là một công cụ hữu hiệu trong phát triển web vì nó mang l�
 - Cookie được lưu trữ trên máy tính của người dùng, thường trong một thư mục đặc biệt của trình duyệt.
 - Ngoài ra cookie cũng được máy chủ lưu lại sau khi gửi về client nhầm mục đích đối chiều sau này.
 
+Khi gửi qua lại giữa client và server, cookie được chứa trong header của HTTP request. Bạn có thể xem thông tin của một cookie đã lưu trong tab Application của devtool.
+![Cookie1](../../assets/image/image11.png)
+
+Thông thường cấu trúc cookie sẽ bao gồm 2 trường quan trọng nhất là `name` và `value`.Ngoài ra, có các thành phần khác có thể có trong một cookie:
+
+- `Domain`: Domain mà cookie có hiệu lực.
+- `Path`: Đường dẫn nơi cookie có hiệu lực.
+- `Expires`: Thời gian hết hạn của cookie.
+- `Secure`: Cho biết cookie chỉ được gửi qua kết nối HTTPS.
+- `HttpOnly`: Ngăn JavaScript truy cập cookie, tăng cường bảo mật.
+
 ### **Who can access cookies?** (Ai có thể truy cập cookie?)
 
 - Chủ yếu là website đã tạo ra cookie đó. Tuy nhiên, các bên thứ ba (ví dụ: mạng quảng cáo) cũng có thể truy cập cookie nếu website đó sử dụng dịch vụ của họ.
@@ -65,10 +76,6 @@ Cookie là một công cụ hữu hiệu trong phát triển web vì nó mang l�
   ```php
   setcookie("username", "", time() - 3600); // Đặt thời gian hết hạn của cookie thành quá khứ để xóa nó
   ```
-
-- **Kiểm tra cookies trên trình duyệt:**
-  Khi gửi cookie qua lại giữa trình duyệt và server, cookie sẽ được chứa trên header
-  ![Cookie1](../../assets/image/image11.png)
 
 - **Phân biệt Session cookies và Persistent cookise**
   **DevTools** là một công cụ vô cùng hữu ích để kiểm tra và quản lý các cookie trên trình duyệt. Để phân biệt giữa **Session cookies** (cookie phiên) và **Persistent cookies** (cookie thường xuyên), bạn cần chú ý đến thuộc tính **Expires** hoặc **Max-Age** của cookie.
