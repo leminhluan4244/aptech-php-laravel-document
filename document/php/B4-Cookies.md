@@ -66,11 +66,22 @@ Thông thường cấu trúc cookie sẽ bao gồm 2 trường quan trọng nh�
   setcookie("username", "John Doe", time() + 3600); // Tạo cookie tên là "username" với giá trị "John Doe" và sẽ hết hạn sau 1 giờ
   ```
 - **Đọc cookie:**
+  PHP cung cấp rất nhiều cách để truy cập vào Cookie. Cách đơn giản nhất là sử dụng biến `$_COOKIE` hoặc `$HTTP_COOKIE_VARS`.
+
+  ```php
+  echo "Username is: " . $_COOKIE["username"];
+  // hoặc
+  echo "Username is: " . $HTTP_COOKIE_VARS["username"];
+  ```
+
+  Bạn có thể sử dụng hàm isset() để kiểm tra xem Cookie được thiết lập hay chưa.
+
   ```php
   if(isset($_COOKIE["username"])) {
       echo "Username is: " . $_COOKIE["username"];
   }
   ```
+
 - **Xóa cookie:**
 
   ```php
