@@ -1,21 +1,3 @@
-array_change_key_case(array $array, int $case) 
-array_chunk(array $array, int $length, bool $preserve_keys) 
-array_column(array $array, int|string|null $column_key, int|string|null $index_key)
-array_combine(array $keys, array $values) 
-array_count_values(array $array) 
-array_diff(array $array, array ...$arrays) 
-array_diff_assoc(array $keys, array $values) 
-array_diff_key(array $array, array ...$arrays) 
-array_fill(int $start_index, int $count, mixed $value)
-array_filter(array $array, ?callable $callback, int $mode)
-array_flip(array $array) 
-array_intersect(array $array, array ...$arrays) 
-array_map(?callable $callback, array $array, array ...$arrays) 
-array_key_exists(string|int $key, array $array) 
-array_keys(array $array) 
-array_merge(array ...$arrays) 
-
-
 ### Giới thiệu các hàm xử lý mảng trong PHP
 
 #### 1. array_change_key_case(array $array, int $case)
@@ -211,8 +193,7 @@ if (array_key_exists('name', $array)) {
 
 #### 15. array_keys(array $array)
 - `Chức năng:` Trả về một mảng chứa tất cả các khóa của một mảng.
-- `Tham số:`
-    - `$array`: Mảng.
+- `Tham số:` `$array`: Mảng.
 - `Trả về:` Mảng chứa các khóa.
 - `Ví dụ:`
 ```php
@@ -223,8 +204,7 @@ print_r($keys); // Output: Array ( [0] => name [1] => age )
 
 #### 16. array_merge(array ...$arrays)
 - `Chức năng:` Trộn nhiều mảng thành một mảng mới.
-- `Tham số:`
-    - `...$arrays`: Các mảng cần trộn.
+- `Tham số:` `...$arrays`: Các mảng cần trộn.
 - `Trả về:` Mảng mới.
 - `Ví dụ:`
 ```php
