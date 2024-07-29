@@ -1,6 +1,6 @@
 ### **What is a Session?** (Session là gì?)
 
-Session là một phiên làm việc giữa một người dùng và một máy chủ web. Nó được tạo ra khi một người dùng truy cập vào một website và kết thúc khi người dùng đóng trình duyệt hoặc sau một khoảng thời gian không hoạt động.
+Session là một phiên làm việc giữa một người dùng và một server web. Nó được tạo ra khi một người dùng truy cập vào một website và kết thúc khi người dùng đóng trình duyệt hoặc sau một khoảng thời gian không hoạt động.
 
 **Why do we use Sessions?** (Tại sao chúng ta sử dụng Session?)
 
@@ -39,19 +39,21 @@ Session là một phiên làm việc giữa một người dùng và một máy 
 
 ### **Where is Session data stored?** (Dữ liệu Session được lưu trữ ở đâu?)
 
-- **Server-side:** Dữ liệu Session thường được lưu trữ trên máy chủ web, trong bộ nhớ hoặc cơ sở dữ liệu.
+- **Server-side:** Dữ liệu Session thường được lưu trữ trên server web, trong bộ nhớ (RAM), trong file của project hoặc trong cơ sở dữ liệu tùy vào vị trí mà lập trình viên muốn.
+![SessionSave](../../assets/image/image16.png)
 
 ### **Who can access Session data?** (Ai có thể truy cập dữ liệu Session?)
 
-- **Máy chủ web:** Máy chủ web có quyền truy cập đầy đủ vào dữ liệu Session của người dùng.
-- **Ứng dụng web:** Các ứng dụng web chạy trên máy chủ cũng có thể truy cập dữ liệu Session.
+- **Server web:** server web có quyền truy cập đầy đủ vào dữ liệu Session của người dùng.
+- **Ứng dụng web:** Các ứng dụng web chạy trên server cũng có thể truy cập dữ liệu Session.
 - **Người dùng:** Thông thường người dùng không thể trực tiếp truy cập và xem dữ liệu Session.
 
 ### **How does a Session work?** (Session hoạt động như thế nào?)
 
-1. Khi người dùng truy cập website, máy chủ tạo ra một Session ID duy nhất và gửi nó đến trình duyệt của người dùng dưới dạng cookie.
-2. Trình duyệt sẽ gửi Session ID trở lại máy chủ trong mỗi yêu cầu tiếp theo.
-3. Máy chủ sử dụng Session ID để tìm kiếm và truy xuất dữ liệu Session tương ứng.
+1. Khi người dùng truy cập website, server tạo ra một Session ID (trong PHP nó có tên là `PHPSESSID` ) duy nhất và gửi nó đến trình duyệt của người dùng dưới dạng cookie.
+2. Trình duyệt sẽ gửi Session ID trở lại server trong mỗi yêu cầu tiếp theo.
+3. Server sử dụng Session ID để tìm kiếm và truy xuất dữ liệu Session tương ứng.
+4. `$_SESSION` trong PHP là mảng chứa tất cả thông tin session tương ứng với Session ID mà người dùng gửi lên.
 
 ### **So sánh Session và Cookie:**
 
@@ -62,37 +64,70 @@ Session là một phiên làm việc giữa một người dùng và một máy 
 | Bảo mật          | An toàn hơn cookie                                  | Ít an toàn hơn session                  |
 | Mục đích sử dụng | Lưu trữ thông tin tạm thời trong một phiên làm việc | Lưu trữ thông tin lâu dài hoặc ngắn hạn |
 
-- **Khởi tạo và sử dụng session:**
+- **Khởi tạo và sử dụng session:** Dùng hàm `session_start()` để thông báo việc bạn sẽ sử dụng session. Sử dụng cú pháp `$_SESSION[key] = value` để gắng giá trị tương ứng với 1 key trong session.
+- **Kiểm tra xem session đã tồn tại chưa:** sử dụng `isset($_SESSION[key])` để kiểm tra xem trong session có index nào tên là `key` không.
+
+> Xem ví dụ dưới đây
 
 ```php
+// file: index.php
 <?php
-// Bắt đầu một session
-session_start();
-
-// Lưu trữ dữ liệu vào session
-$_SESSION['username'] = 'John Doe';
-$_SESSION['user_id'] = 123;
-
-// Truy xuất dữ liệu từ session
-echo "Xin chào, " . $_SESSION['username'] . "!";
+  session_start();
+  // Trong trường hợp có dữ liệu từ form thì cập nhật session
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $_SESSION['name'] = $_POST["username"];
+  }
+  // Hiển thị tên người dùng nếu có session
+  if (isset($_SESSION['name'])) {
+    // Truy xuất dữ liệu từ session
+    echo "Xin chào, " . $_SESSION['name'] . "! <hr>";
+    echo '<a href="session-check.php">Click vào đây để sang trang khác xem session còn truy cập được không</a>';
+  }
 ?>
-```
 
-- **Kiểm tra xem session đã tồn tại chưa:**
+
+<?php 
+// Hiển thị form nhập dữ liệu nếu chưa có session
+if (!isset($_SESSION['name'])) { 
+?>
+<h2>Hãy nhập tên của bạn để lưu nó vào session</h2>
+<form method="post">
+    <table>
+      <tr>
+          <td>Họ tên:</td>
+          <td><input type="text" name="username"></td>
+      </tr>
+    </table>
+    <br>
+    <button type="text" name="name">Lưu thông tin</button>
+</form>
+<?php } ?>
+```
 
 ```php
+// file: session-check.php
 <?php
-session_start();
-
-if (isset($_SESSION['username'])) {
-    echo "Bạn đã đăng nhập.";
-} else {
-    echo "Bạn chưa đăng nhập.";
-}
+  session_start();
+  // Hiển thị tên người dùng nếu có session
+  if (isset($_SESSION['name'])) {
+    // Truy xuất dữ liệu từ session
+    echo "Xin chào, session username của bạn đã được tìm thấy mà không cần nhập lại >> <b>" . $_SESSION['name'] . "<b>!";
+  }
 ?>
 ```
+> Cách session hoạt động ở ví dụ này
+Ở lần đầu truy cập, trình duyệt của bạn không có sẵn `PHPSESSID` do đó trong request truyền đi sẽ không có cookie nào, server PHP sau khi nhận được request sẽ hiểu rằng đây là lần truy cập đầu tiên của bạn, do đó nó sẽ tạo một vị trí lưu session cho bạn với `PHPSESSID` mới. Sau khi tạo xong `PHPSESSID` mới sẽ được gửi trong header của response về trình duyệt.
+![Session1](../../assets/image/image12.png)
+Sau khi nhận được cookie từ response gửi về trình duyệt sẽ lưu nó lại và gửi đi kèm theo cookie này trong header ở những lần gửi request sau đó.
+![Session2](../../assets/image/image13.png)
+Nếu ấn `F5` hoặc ấn nút refresh để load lại trang lúc này bạn sẽ thấy trong các request gửi đi có cookie đã lưu.
+![Session3](../../assets/image/image14.png)
+Do chưa nhập dữ liệu vào ô input `Họ tên` nên lúc này form vẫn sẽ hiển thị vì session đã có nhưng `$_SESSION['name']` thì đang rỗng. Nhập tên của bạn và nhấn `Lưu thông tin`. Sau khi lưu `$_SESSION['name']` sẽ có giá trị do đó sẽ trả về tên của bạn. Lúc này có thể hình dùng rằng, trong dự án của bạn, khu vực lưu trữ session tương ứng với `PHPSESSID` đã có thêm dữ liệu `name=Luân`. Lúc này HTML trả về đã có nội dung tên của bạn. Nếu refresh nhiều lần thì thông tin vẫn sẽ không thay đổi do nó đã được lưu trong session và chỉ lấy ra để trả về.
+![Session4](../../assets/image/image15.png)!
 
-- **Hủy session:**
+
+
+- **Hủy session:** Dùng hàm `session_destroy()`
 
 ```php
 <?php
@@ -103,7 +138,7 @@ session_destroy();
 ?>
 ```
 
-- **Thiết lập thời gian sống của session:**
+- **Thiết lập thời gian sống của session:** Dùng hàm `ini_set()`. Sau khi hết thời hạn session tương ứng với `PHPSESSID` sẽ bị hủy. Từ lần truy cập tiếp theo bạn sẽ được cập một `PHPSESSID` mới.
 
 ```php
 <?php
@@ -116,7 +151,7 @@ session_start();
 ?>
 ```
 
-- **Ví dụ về giỏ hàng:**
+> Ví dụ về giỏ hàng
 
 ```php
 <?php
@@ -142,9 +177,3 @@ if (isset($_SESSION['cart'])) {
 }
 ?>
 ```
-
-**Giải thích:**
-
-- `session_start()`: Hàm này được sử dụng để bắt đầu hoặc khôi phục một session.
-- `$_SESSION`: Là một mảng toàn cục chứa tất cả các biến session.
-- `session_destroy()`: Hàm này được sử dụng để hủy toàn bộ session.
