@@ -64,7 +64,7 @@ Session là một phiên làm việc giữa một người dùng và một serve
 | Bảo mật          | An toàn hơn cookie                                  | Ít an toàn hơn session                  |
 | Mục đích sử dụng | Lưu trữ thông tin tạm thời trong một phiên làm việc | Lưu trữ thông tin lâu dài hoặc ngắn hạn |
 
-- **Khởi tạo và sử dụng session:** Dùng hàm `session_start()` để thông báo việc bạn sẽ sử dụng session. Sử dụng cú pháp `$_SESSION[key] = value` để gắng giá trị tương ứng với 1 key trong session.
+- **Khởi tạo và sử dụng session:** Dùng hàm `session_start()` hoặc `ob_start()` để thông báo việc bạn sẽ sử dụng session. Sử dụng cú pháp `$_SESSION[key] = value` để gắng giá trị tương ứng với 1 key trong session.
 - **Kiểm tra xem session đã tồn tại chưa:** sử dụng `isset($_SESSION[key])` để kiểm tra xem trong session có index nào tên là `key` không.
 
 > Xem ví dụ dưới đây
@@ -127,7 +127,7 @@ Do chưa nhập dữ liệu vào ô input `Họ tên` nên lúc này form vẫn 
 
 
 
-- **Hủy session:** Dùng hàm `session_destroy()`
+- **Hủy session:** Dùng hàm `session_destroy()` để hủy toàn bộ session của một người dùng hoặc dùng hàm `unset()`, VD: `unset($_SESSION['id_login'])` để hủy một phần session.
 
 ```php
 <?php
