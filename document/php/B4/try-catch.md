@@ -9,6 +9,7 @@ Trong lập trình, ngoại lệ (exception) là những sự kiện bất thư�
 `Xử lý ngoại lệ` là một cơ chế giúp chương trình của bạn có thể xử lý những sự kiện bất thường này một cách graceful, tránh việc chương trình bị dừng đột ngột và gây ra lỗi nghiêm trọng.
 
 ### Cơ chế try-catch-finally trong PHP
+
 PHP cung cấp cơ chế `try-catch-finally` để xử lý ngoại lệ:
 
 - `try:` Khối lệnh này chứa các code có thể gây ra ngoại lệ.
@@ -34,6 +35,7 @@ try {
 ```
 
 ### Các hàm xử lý ngoại lệ
+
 Khi một ngoại lệ xảy ra, một đối tượng `Exception` được tạo và bạn có thể truy xuất các thông tin về ngoại lệ thông qua các phương thức của đối tượng này:
 
 - `getMessage():` Trả về thông điệp mô tả ngoại lệ.
@@ -58,6 +60,7 @@ try {
 ```
 
 ### Tại sao nên sử dụng exception handling?
+
 - `Tăng độ tin cậy của ứng dụng:` Giúp chương trình không bị dừng đột ngột khi xảy ra lỗi.
 - `Dễ dàng debug:` Thông tin về ngoại lệ giúp bạn dễ dàng tìm và sửa lỗi.
 - `Cải thiện khả năng đọc code:` Code trở nên rõ ràng hơn khi bạn tách biệt phần xử lý lỗi ra khỏi luồng chính của chương trình.

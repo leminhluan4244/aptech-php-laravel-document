@@ -77,3 +77,19 @@ array(4) {
 - Trong khi `gettype()` được dùng trong code bình thường như các hàm khác thì `var_dump()` thường được lập trình viên chèn vào code để xem chi tiết dữ liệu của biến rồi sau đó xóa đi (hỗ trợ `debug` nhiều hơn là `production`).
 
 Ngoài ra ta còn có: `print_r()` là một hàm tương tự như `var_dump()`, nhưng nó hiển thị thông tin một cách ngắn gọn hơn.
+
+`Ví dụ:`
+
+```php
+$user = array(
+    "name" => "Luan Le",
+    "age" => 30,
+    "address" => array(
+        "street" => "Quan 7",
+        "city" => "Ho Chi Minh",
+        "state" => "Mien Nam"
+    )
+);
+
+print_r($user);
+```

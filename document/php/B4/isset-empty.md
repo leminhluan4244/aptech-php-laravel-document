@@ -4,12 +4,12 @@ Trong PHP, `isset()` và `empty()` là hai hàm thường được sử dụng �
 
 - `Chức năng:` Kiểm tra xem một biến đã được khai báo và có giá trị khác null hay chưa.
 - `Trả về:`
-    - `TRUE:` Nếu biến đã được khai báo và không phải null.
-    - `FALSE:` Nếu biến chưa được khai báo hoặc có giá trị null.
+  - `TRUE:` Nếu biến đã được khai báo và không phải null.
+  - `FALSE:` Nếu biến chưa được khai báo hoặc có giá trị null.
 - `Sử dụng:`
-    - Kiểm tra xem một biến có tồn tại trước khi sử dụng để tránh lỗi "undefined variable".
-    - Kiểm tra sự tồn tại của các phần tử trong mảng.
-    - Kiểm tra sự tồn tại của các biến được truyền qua phương thức POST hoặc GET.
+  - Kiểm tra xem một biến có tồn tại trước khi sử dụng để tránh lỗi "undefined variable".
+  - Kiểm tra sự tồn tại của các phần tử trong mảng.
+  - Kiểm tra sự tồn tại của các biến được truyền qua phương thức POST hoặc GET.
 
 `Ví dụ:`
 
@@ -27,11 +27,11 @@ if (isset($name)) {
 
 - `Chức năng:` Kiểm tra xem một biến có coi là rỗng hay không.
 - `Trả về:`
-    - `TRUE:` Nếu biến không tồn tại, có giá trị null, 0, false, "" (chuỗi rỗng), mảng rỗng hoặc đối tượng không có thuộc tính.
-    - `FALSE:` Trong tất cả các trường hợp khác.
+  - `TRUE:` Nếu biến không tồn tại, có giá trị null, 0, false, "" (chuỗi rỗng), mảng rỗng hoặc đối tượng không có thuộc tính.
+  - `FALSE:` Trong tất cả các trường hợp khác.
 - `Sử dụng:`
-    - Kiểm tra xem một biến có chứa giá trị hữu ích hay không.
-    - Kiểm tra xem một trường trong form có được điền giá trị hay không.
+  - Kiểm tra xem một biến có chứa giá trị hữu ích hay không.
+  - Kiểm tra xem một trường trong form có được điền giá trị hay không.
 
 `Ví dụ:`
 
@@ -47,11 +47,11 @@ if (empty($age)) {
 
 ### Sự khác biệt giữa isset() và empty()
 
-| Đặc điểm | isset() | empty() |
-|---|---|---|
-| `Kiểm tra` | Kiểm tra sự tồn tại và giá trị khác null | Kiểm tra giá trị có được coi là rỗng hay không |
-| `Trả về TRUE khi:` | Biến đã được khai báo và không phải null | Khi giá trị đầu vào là `truthy` |
-| `Sử dụng` | Kiểm tra sự tồn tại của biến trước khi sử dụng | Kiểm tra xem biến có chứa giá trị hữu ích hay không |
+| Đặc điểm           | isset()                                        | empty()                                             |
+| ------------------ | ---------------------------------------------- | --------------------------------------------------- |
+| `Kiểm tra`         | Kiểm tra sự tồn tại và giá trị khác null       | Kiểm tra giá trị có được coi là rỗng hay không      |
+| `Trả về TRUE khi:` | Biến đã được khai báo và không phải null       | Khi giá trị đầu vào là `truthy`                     |
+| `Sử dụng`          | Kiểm tra sự tồn tại của biến trước khi sử dụng | Kiểm tra xem biến có chứa giá trị hữu ích hay không |
 
 ### Khi nào nên sử dụng hàm nào?
 

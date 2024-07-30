@@ -1,14 +1,27 @@
 ### HTTP Request là gì ?
-HTTP request là thông tin được gửi từ client lên server, để yêu cầu server tìm hoặc xử lý một số thông tin, dữ liệu mà client muốn. HTTP request có thể là một file text dưới dạng HTML Form Data, XML , JSON, hoặc bất kỳ dạng nào mà cả client và server đều có thể hiểu được. 
+
+HTTP request là thông tin được gửi từ client lên server, để yêu cầu server tìm hoặc xử lý một số thông tin, dữ liệu mà client muốn. HTTP request có thể là một file text dưới dạng HTML Form Data, XML , JSON, hoặc bất kỳ dạng nào mà cả client và server đều có thể hiểu được.
 
 > Theo Wikipedia: `HTTP` (tiếng Anh: `HyperText Transfer Protocol` - Giao thức truyền tải siêu văn bản) là một giao thức lớp ứng dụng nằm trong bộ giao thức dành cho hệ thống thông tin siêu phương tiện phân tán, cộng tác.[1] Nó chính là nền tảng dùng để trao đổi và liên lạc dữ liệu với World Wide Web, nơi mà các tập tin tài liệu siêu văn bản có thể chứa các siêu liên kết dẫn đến các tài nguyên số khác mà người dùng có thể dễ dàng truy cập được bằng cách dùng chuột nhấp vào hoặc dùng ngón tay chạm vào màn hình cảm ứng lúc duyệt web. Nhờ đó, HTTP cho phép người sử dụng truy cập và tải về các tài nguyên như văn bản HTML, text, video, ảnh... của các trang web và hiển thị chúng trên trình duyệt.
 
 Hiện nay HTTP đã ra mắt các phiên bản:
+
 - `HTTP/0.9`: Ra mắt 1991 và Đã lỗi thời
 - `HTTP/1.0`: Ra mắt 1996 và Đã lỗi thời
 - `HTTP/1.1`: Ra mắt 1997 và Còn thông dụng
 - `HTTP/2`: Ra mắt 2015 và Còn thông dụng
 - `HTTP/3`: Ra mắt 2022 và Còn thông dụng
+
+Một HTTP request thường bao gồm bốn phần chính:
+
+- **Request Line**: Đây là dòng đầu tiên của HTTP request, bao gồm phương thức HTTP (HTTP method), đường dẫn (URL), và phiên bản HTTP.
+- **Headers**: Đây là các cặp khóa-giá trị cung cấp thông tin thêm về request và về máy khách. Một số header thông dụng bao gồm:
+  - `Host`: Địa chỉ máy chủ mà yêu cầu được gửi đến.
+  - `User-Agent`: Thông tin về trình duyệt hoặc ứng dụng đang gửi yêu cầu.
+  - `Accept`: Loại nội dung mà client có thể xử lý (ví dụ: `text/html`, `application/json`).
+  - `Content-Type`: Loại dữ liệu gửi đi trong request body (đối với các yêu cầu như POST, PUT).
+  - `Authorization`: Thông tin xác thực.
+- **Body**: Đây là phần chứa dữ liệu thực tế được gửi đi trong request, chỉ có ở các phương thức như POST, PUT, PATCH. Đối với các phương thức như GET, DELETE, body thường không có hoặc rất ngắn.
 
 Dưới đây là một số ví dụ trong http khi về gửi `request` và nhận về `response`:
 
@@ -43,6 +56,17 @@ name=John+Doe&email=johndoe%40example.com
 ```
 
 ### HTTP Response (Server trả về Client)
+
+HTTP response là một thông điệp mà máy chủ web (server) gửi lại cho máy khách (client) sau khi nhận được và xử lý một HTTP request. HTTP response chứa thông tin về kết quả của request mà nó nhận được, bao gồm trạng thái của yêu cầu, dữ liệu được yêu cầu (nếu có), và các thông tin bổ sung khác.
+
+Một HTTP response thường bao gồm ba phần chính:
+
+- **Status Line**: Đây là dòng đầu tiên của HTTP response, bao gồm phiên bản HTTP, mã trạng thái (status code), và mô tả ngắn gọn của mã trạng thái.
+- **Headers**: Đây là các cặp khóa-giá trị cung cấp thông tin thêm về response và về máy chủ. Một số header thông dụng bao gồm:
+  - `Content-Type`: Chỉ ra loại dữ liệu trả về (ví dụ: `text/html`, `application/json`).
+  - `Content-Length`: Độ dài của nội dung trong response.
+  - `Set-Cookie`: Thiết lập cookie.
+- **Body**: Đây là phần dữ liệu thực tế được trả về trong response, có thể là HTML, JSON, XML, hoặc bất kỳ định dạng nào khác tùy thuộc vào yêu cầu và loại dữ liệu mà máy chủ trả về.
 
 **Response for GET request:**
 
@@ -118,7 +142,9 @@ HTTP/<###Version###> <###Message Status###>
 
 <###Body###>
 ```
+
 ### HTTP Request Headers
+
 `HTTP request headers` là một phần không thể thiếu trong giao tiếp giữa client (ví dụ: trình duyệt) và server. Nó đóng vai trò như một tập hợp các cặp tên-giá trị, cung cấp thông tin chi tiết về yêu cầu được gửi đi. Thông qua các headers này, server có thể hiểu rõ hơn về yêu cầu của client và trả về kết quả phù hợp.
 
 Không có ràng buộc cụ thể nào về việc đặt tên cho các `key` trong HTTP request headers ngoài việc chúng phân biệt hoa thường. Người ta thường sử dụng cách viết hoa chữ cái đầu mỗi từ, các từ nối nhau bằng dấu gạch nối `-`.
@@ -126,12 +152,14 @@ Không có ràng buộc cụ thể nào về việc đặt tên cho các `key` t
 #### Các loại key HTTP Request Headers phổ biến:
 
 - **General Headers:**
+
   - **Cache-Control:** Điều khiển cách các bộ nhớ cache xử lý yêu cầu.
   - **Connection:** Xác định loại kết nối (keep-alive, close).
   - **Date:** Thời gian tạo yêu cầu.
   - **Pragma:** Chỉ thị chung cho các máy proxy/cache.
 
 - **Request Headers:**
+
   - **Accept:** Các kiểu nội dung mà client có thể chấp nhận.
   - **Accept-Charset:** Bộ ký tự mà client có thể hiểu.
   - **Accept-Encoding:** Các phương thức nén mà client hỗ trợ.
@@ -174,11 +202,11 @@ Trong ví dụ trên:
 **Đặc điểm của HTTP request body:**
 
 - **Nội dung tùy biến:** Bạn có thể gửi bất kỳ loại dữ liệu nào mà server có thể hiểu, chẳng hạn như:
-    - **Dữ liệu form:** Dữ liệu từ các form HTML.
-    - **Dữ liệu JSON:** Dữ liệu được định dạng theo JSON.
-    - **Dữ liệu XML:** Dữ liệu được định dạng theo XML.
-    - **Dữ liệu nhị phân:** Hình ảnh, file, v.v.
-    - **... Một số kiểu khác nửa**
+  - **Dữ liệu form:** Dữ liệu từ các form HTML.
+  - **Dữ liệu JSON:** Dữ liệu được định dạng theo JSON.
+  - **Dữ liệu XML:** Dữ liệu được định dạng theo XML.
+  - **Dữ liệu nhị phân:** Hình ảnh, file, v.v.
+  - **... Một số kiểu khác nửa**
 - **Kích thước:** Kích thước của body không bị giới hạn nghiêm ngặt, nhưng thực tế thường bị giới hạn bởi các cấu hình của server và client.
 - **Mã hóa:** Dữ liệu trong body thường được mã hóa để đảm bảo bảo mật, đặc biệt khi gửi thông tin nhạy cảm.
 
@@ -196,8 +224,8 @@ Giả sử bạn muốn gửi một yêu cầu POST để tạo một người d
 
 ```json
 {
-    "name": "John Doe",
-    "email": "johndoe@example.com"
+  "name": "John Doe",
+  "email": "johndoe@example.com"
 }
 ```
 
@@ -220,7 +248,7 @@ Content-Type: application/json
 
 #### HTTP Response Headers
 
-`Response headers` cung cấp thông tin chi tiết về phản hồi của server. Vể cấu trúc nó cũng tương tự như `Request headers`. 
+`Response headers` cung cấp thông tin chi tiết về phản hồi của server. Vể cấu trúc nó cũng tương tự như `Request headers`.
 
 **Một số response s phổ biến:**
 
@@ -282,21 +310,23 @@ Trong ví dụ trên:
 - `HEAD`: Tương tự như GET, nhưng chỉ trả về header mà không có body, thường được dùng để kiểm tra xem một tài nguyên có tồn tại hay không, kích thước, loại nội dung, v.v.
 - `OPTIONS`: Dùng để yêu cầu server trả về các phương thức HTTP mà server hỗ trợ cho một tài nguyên cụ thể.
 
-Ngoài ra còn có `CONNECT` và `TRACE` tuy nhiên hai phương thức này ít được sử dụng hơn, bạn có thể tìm hiểu đầy đủ về các phương thức này ở các trang như: 
+Ngoài ra còn có `CONNECT` và `TRACE` tuy nhiên hai phương thức này ít được sử dụng hơn, bạn có thể tìm hiểu đầy đủ về các phương thức này ở các trang như:
+
 - [W3School](https://www.w3schools.com/tags/ref_httpmethods.asp)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 
 #### Bảng so sánh các HTTP method
 
-| Method | Mô tả | An toàn | Idempotent |
-|---|---|---|---|
-| GET | Lấy tài nguyên | Có | Có |
-| POST | Tạo tài nguyên mới | Không | Không |
-| PUT | Cập nhật toàn bộ tài nguyên | Không | Có |
-| PATCH | Cập nhật một phần tài nguyên | Không | Không |
-| DELETE | Xóa tài nguyên | Không | Có |
-| HEAD | Lấy header của tài nguyên | Có | Có |
-| OPTIONS | Lấy các phương thức HTTP được hỗ trợ | Có | Có |
+| Method  | Mô tả                                | An toàn | Idempotent |
+| ------- | ------------------------------------ | ------- | ---------- |
+| GET     | Lấy tài nguyên                       | Có      | Có         |
+| POST    | Tạo tài nguyên mới                   | Không   | Không      |
+| PUT     | Cập nhật toàn bộ tài nguyên          | Không   | Có         |
+| PATCH   | Cập nhật một phần tài nguyên         | Không   | Không      |
+| DELETE  | Xóa tài nguyên                       | Không   | Có         |
+| HEAD    | Lấy header của tài nguyên            | Có      | Có         |
+| OPTIONS | Lấy các phương thức HTTP được hỗ trợ | Có      | Có         |
+
 - **An toàn:** Một phương thức được coi là an toàn nếu nó không gây ra bất kỳ thay đổi nào trên server.
 - **Idempotent:** Một phương thức được coi là idempotent nếu việc gọi nó nhiều lần sẽ cho kết quả giống như gọi nó một lần.
 
@@ -326,7 +356,8 @@ Một HTTP status message thường có dạng:
 HTTP/1.1 <mã trạng thái> <mô tả>
 ```
 
-Trong đó: 
+Trong đó:
+
 - `HTTP/1.1`: Phiên bản giao thức HTTP.
 - `<mã trạng thái>`:s Một số nguyên ba chữ số biểu thị trạng thái của yêu cầu.
 - `<mô tả>`: Một đoạn văn bản mô tả ngắn gọn về trạng thái.
@@ -339,33 +370,34 @@ HTTP/1.1 200 OK
 
 Trong ví dụ trên:
 
-* **200:** Mã trạng thái cho biết yêu cầu đã được xử lý thành công.
-* **OK:** Mô tả chi tiết hơn về trạng thái.
+- **200:** Mã trạng thái cho biết yêu cầu đã được xử lý thành công.
+- **OK:** Mô tả chi tiết hơn về trạng thái.
 
 #### Các nhóm mã trạng thái HTTP
 
 Các mã trạng thái HTTP được chia thành các nhóm để dễ dàng phân loại:
 
-* **1xx (Thông tin):** Yêu cầu đã được nhận và đang được xử lý.
-* **2xx (Thành công):** Yêu cầu đã được xử lý thành công.
-* **3xx (Chuyển hướng):** Client cần thực hiện hành động bổ sung để hoàn thành yêu cầu.
-* **4xx (Lỗi của client):** Yêu cầu có lỗi do phía client gây ra.
-* **5xx (Lỗi của server):** Yêu cầu không thể được xử lý do lỗi phía server.
+- **1xx (Thông tin):** Yêu cầu đã được nhận và đang được xử lý.
+- **2xx (Thành công):** Yêu cầu đã được xử lý thành công.
+- **3xx (Chuyển hướng):** Client cần thực hiện hành động bổ sung để hoàn thành yêu cầu.
+- **4xx (Lỗi của client):** Yêu cầu có lỗi do phía client gây ra.
+- **5xx (Lỗi của server):** Yêu cầu không thể được xử lý do lỗi phía server.
 
-Bạn có thể tìm hiểu đầy đủ về các message status ở các trang như: 
+Bạn có thể tìm hiểu đầy đủ về các message status ở các trang như:
+
 - [W3School](https://www.w3schools.com/tags/ref_httpmessages.asp)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 #### Một số mã trạng thái thường gặp
 
-* **200 OK:** Yêu cầu đã được xử lý thành công.
-* **404 Not Found:** Tài nguyên không tìm thấy.
-* **500 Internal Server Error:** Xảy ra lỗi nghiêm trọng trên server.
-* **301 Moved Permanently:** Tài nguyên đã được chuyển đến một URL mới.
-* **401 Unauthorized:** Truy cập bị từ chối do không được phép.
+- **200 OK:** Yêu cầu đã được xử lý thành công.
+- **404 Not Found:** Tài nguyên không tìm thấy.
+- **500 Internal Server Error:** Xảy ra lỗi nghiêm trọng trên server.
+- **301 Moved Permanently:** Tài nguyên đã được chuyển đến một URL mới.
+- **401 Unauthorized:** Truy cập bị từ chối do không được phép.
 
 #### Tầm quan trọng của HTTP status message
 
-* **Thông báo cho client:** Giúp client hiểu được tình trạng của yêu cầu và thực hiện các hành động tiếp theo phù hợp.
-* **Gỡ lỗi:** Giúp các nhà phát triển xác định và khắc phục lỗi trong ứng dụng.
-* **SEO:** Các công cụ tìm kiếm sử dụng mã trạng thái để đánh giá chất lượng của website.
+- **Thông báo cho client:** Giúp client hiểu được tình trạng của yêu cầu và thực hiện các hành động tiếp theo phù hợp.
+- **Gỡ lỗi:** Giúp các nhà phát triển xác định và khắc phục lỗi trong ứng dụng.
+- **SEO:** Các công cụ tìm kiếm sử dụng mã trạng thái để đánh giá chất lượng của website.
