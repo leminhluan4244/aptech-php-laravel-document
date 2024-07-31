@@ -40,7 +40,7 @@ Session là một phiên làm việc giữa một người dùng và một serve
 ### **Where is Session data stored?** (Dữ liệu Session được lưu trữ ở đâu?)
 
 - **Server-side:** Dữ liệu Session thường được lưu trữ trên server web, trong bộ nhớ (RAM), trong file của project hoặc trong cơ sở dữ liệu tùy vào vị trí mà lập trình viên muốn.
-![SessionSave](../../assets/image/image16.png)
+![SessionSave](../../../assets/image/image16.png)
 
 ### **Who can access Session data?** (Ai có thể truy cập dữ liệu Session?)
 
@@ -117,13 +117,13 @@ if (!isset($_SESSION['name'])) {
 ```
 > Cách session hoạt động ở ví dụ này
 Ở lần đầu truy cập, trình duyệt của bạn không có sẵn `PHPSESSID` do đó trong request truyền đi sẽ không có cookie nào, server PHP sau khi nhận được request sẽ hiểu rằng đây là lần truy cập đầu tiên của bạn, do đó nó sẽ tạo một vị trí lưu session cho bạn với `PHPSESSID` mới. Sau khi tạo xong `PHPSESSID` mới sẽ được gửi trong header của response về trình duyệt.
-![Session1](../../assets/image/image12.png)
+![Session1](../../../assets/image/image12.png)
 Sau khi nhận được cookie từ response gửi về trình duyệt sẽ lưu nó lại và gửi đi kèm theo cookie này trong header ở những lần gửi request sau đó.
-![Session2](../../assets/image/image13.png)
+![Session2](../../../assets/image/image13.png)
 Nếu ấn `F5` hoặc ấn nút refresh để load lại trang lúc này bạn sẽ thấy trong các request gửi đi có cookie đã lưu.
-![Session3](../../assets/image/image14.png)
+![Session3](../../../assets/image/image14.png)
 Do chưa nhập dữ liệu vào ô input `Họ tên` nên lúc này form vẫn sẽ hiển thị vì session đã có nhưng `$_SESSION['name']` thì đang rỗng. Nhập tên của bạn và nhấn `Lưu thông tin`. Sau khi lưu `$_SESSION['name']` sẽ có giá trị do đó sẽ trả về tên của bạn. Lúc này có thể hình dùng rằng, trong dự án của bạn, khu vực lưu trữ session tương ứng với `PHPSESSID` đã có thêm dữ liệu `name=Luân`. Lúc này HTML trả về đã có nội dung tên của bạn. Nếu refresh nhiều lần thì thông tin vẫn sẽ không thay đổi do nó đã được lưu trong session và chỉ lấy ra để trả về.
-![Session4](../../assets/image/image15.png)!
+![Session4](../../../assets/image/image15.png)!
 
 
 

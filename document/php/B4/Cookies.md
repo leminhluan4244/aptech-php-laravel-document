@@ -45,7 +45,7 @@ Cookie là một công cụ hữu hiệu trong phát triển web vì nó mang l�
 - Ngoài ra cookie cũng được máy chủ lưu lại sau khi gửi về client nhầm mục đích đối chiều sau này.
 
 Khi gửi qua lại giữa client và server, cookie được chứa trong header của HTTP request. Bạn có thể xem thông tin của một cookie đã lưu trong tab Application của devtool.
-![Cookie1](../../assets/image/image11.png)
+![Cookie1](../../../assets/image/image11.png)
 
 Thông thường cấu trúc cookie sẽ bao gồm 2 trường quan trọng nhất là `name` và `value`.Ngoài ra, có các thành phần khác có thể có trong một cookie:
 
