@@ -17,6 +17,12 @@ Sau khi tạo xong bạn kiểm tra lại script xem chọn đúng cơ sở dữ
 CREATE DATABASE quan_ly_hoc_sinh;
 USE quan_ly_hoc_sinh;
 
+CREATE TABLE classes (
+    class_id INT PRIMARY KEY AUTO_INCREMENT,
+    class_name VARCHAR(50),
+    teacher_name VARCHAR(100)
+);
+
 CREATE TABLE students (
     student_id INT PRIMARY KEY AUTO_INCREMENT,
     student_name VARCHAR(100),
@@ -24,12 +30,6 @@ CREATE TABLE students (
     gender ENUM('Nam', 'Nữ'),
     class_id INT,
     FOREIGN KEY (class_id) REFERENCES classes(class_id)
-);
-
-CREATE TABLE classes (
-    class_id INT PRIMARY KEY AUTO_INCREMENT,
-    class_name VARCHAR(50),
-    teacher_name VARCHAR(100)
 );
 ```
 
