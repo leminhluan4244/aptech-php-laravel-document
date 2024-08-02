@@ -1,30 +1,32 @@
 ### What (OOP là gì?)
 
-OOP viết tắt của Object-Oriented Programming – Lập trình hướng đối tượng ra đời giải quyết các vấn đề mà lập trình truyền thống gặp phải. Lập trình hướng đối tượng không chỉ đơn giản là các cú pháp, câu lệnh mới mà còn là một cách tư duy mới khi giải quyết một vấn đề.
+`OOP` viết tắt của Object-Oriented Programming – Lập trình hướng đối tượng ra đời giải quyết các vấn đề mà lập trình truyền thống gặp phải. Lập trình hướng đối tượng không chỉ đơn giản là các cú pháp, câu lệnh mới mà còn là một cách tư duy mới khi giải quyết một vấn đề.
 
-- `Lập trình hướng đối tượng (OOP):` Là một phương pháp lập trình dựa trên các đối tượng (objects), mà mỗi đối tượng là một thực thể có trạng thái (dữ liệu) và hành vi (phương thức).
+`Lập trình hướng đối tượng (OOP):` Là một phương pháp lập trình dựa trên các đối tượng (objects), mà mỗi đối tượng là một thực thể có trạng thái (dữ liệu) và hành vi (phương thức).
 
 - Lập trình hướng đối tượng có 4 tính chất chính:
-  - Tính trìu tượng (abstraction).
+  - Tính trừu tượng (abstraction).
   - Tính kế thừa (inheritance).
   - Tính đóng gói (encapsulation).
   - Tính đa hình (polymorphism).
 
-#### Các khái niệm cơ bản trong OOP
+### Các khái niệm cơ bản trong OOP
 
 **Lớp và đối tượng**
 
-- **Lớp (Class)**: Lớp là tập hợn các thuộc tính (biến) và phương thức (hàm) mà các đối tượng của từng lớp có thể sử dụng.
-- **Đối tượng (Object)**: Đối tượng là sự thể hiện cụ thể của một lớp. Nó có thể sử dụng các giá trị và các phương thức của lớp tạo ra nó.
+- **Lớp (Class)**: Lớp là tập hợn các thuộc tính (biến) và phương thức (hàm) mà các đối tượng được tạo ra bởi nó có thể sử dụng.
+- **Đối tượng (Object)**: Từ một bản thiết kế class ta có thể đối tượng là sự thể hiện cụ thể của một lớp. Nó có thể sử dụng các giá trị và các phương thức của lớp tạo ra nó.
 
 **Thuộc tính và phương thức**
 
-- **Thuộc tính (Property/Attribute)**: Đây là các biến dùng để lưu trữ dữ liệu và chúng được định nghĩa ở trong lớp. Tên thuộc tính thường là các tính từ hoặc danh từ
-- **Phương thức (Method)**: Đây là các hàm để thực hiện một chức năng nhất định có liên quan đến đối tượng và chúng cũng được định nghĩa ở trong lớp. Tên của phương thức thường là động từ
+- **Thuộc tính (Properties/Attribute)**: Đây là các **biến** dùng để lưu trữ dữ liệu và chúng được định nghĩa ở trong lớp. Tên thuộc tính thường là các **tính từ** hoặc **danh từ**.
+
+- **Phương thức (Method)**: Đây là các **hàm** để thực hiện một chức năng nhất định có liên quan đến đối tượng và chúng cũng được định nghĩa ở trong lớp. Tên của phương thức thường là **động từ**.
 
 **Hàm khởi tạo (Constructor) và Hàm hủy (Destructor)**
 
-- **Hàm khởi tạo (Constructor)**: Đây là một phương thức đặc biệt, nó sẽ được gọi ngay sau khi đối tượng của lớp đó được tạo ra. Thông thường trong hàm khởi tạo chúng ta sẽ khởi tạo các thuộc tính của đối tượng để có thể sử dụng khi cần thiết.
+- **Hàm khởi tạo (Constructor)**: Đây là một phương thức đặc biệt, nó sẽ được gọi ngay sau khi đối tượng của lớp đó được tạo ra. Thông thường trong hàm khởi tạo chúng ta sẽ khởi tạo các **thuộc tính** của đối tượng để có thể sử dụng khi cần thiết.
+
 - **Hàm hủy (Destructor)**: Ngược lại với hàm khởi tạo, hàm hủy có tác dụng giải phóng tài nguyên mà đối tượng đã sử dụng. Hàm này được gọi sau khi đối tượng bị xóa bỏ khỏi bộ nhớ.
 
 ### Who (Ai sẽ sử dụng OOP?)
@@ -224,7 +226,7 @@ class MyClass {
 }
 
 $object = new MyClass();
-$object->accessPrivate();  // OK
+$object->accessPrivate();
 
 // Không thể truy cập trực tiếp từ bên ngoài
 // echo $object->privateProperty;  // Lỗi
@@ -243,4 +245,4 @@ $object->accessPrivate();  // OK
 
 Trừu tượng hóa là quá trình đơn giản hóa một đối tượng mà trong đó chỉ bao gồm những đặc điểm quan tâm và bỏ qua những đặc điểm chi tiết nhỏ. Quá trình trừu tượng hóa dữ liệu giúp ta xác định được những thuộc tính, hành động nào của đối tượng cần thiết sử dụng cho chương trình.
 
-Để hiểu rõ về tính trìu tượng chúng ta sẽ tìm hiểu về `Abstract` class và `Interface`. Sẽ học ở buổi sau.
+Để hiểu rõ về tính trừu tượng chúng ta sẽ tìm hiểu về `Abstract` class và `Interface`. Sẽ học ở buổi sau.
