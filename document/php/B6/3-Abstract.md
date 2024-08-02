@@ -2,19 +2,32 @@
 
 ### Định Nghĩa
 
-- Abstract class là một lớp không thể tạo ra đối tượng trực tiếp, mà chỉ có thể được kế thừa.
-- Abstract class có thể chứa cả các phương thức trừu tượng (không có định nghĩa) và các phương thức cụ thể (có định nghĩa).
+- Abstract Class là một lớp không thể tạo ra đối tượng trực tiếp, mà chỉ có thể được kế thừa.
+- Abstract Class có thể chứa cả các phương thức trừu tượng (không có định nghĩa) và các phương thức cụ thể (có định nghĩa).
 - Một lớp chỉ có thể kế thừa từ một abstract class.
 
 ### Liên hệ thực tế
 Quay lại với phần **Liên hệ thực tế** ở phần Interface ta sẽ có:
+
+Bài toán này là ổn vì ta không biết phải khai báo các phương thức `drive()`, `stop()`, và `refuel()` như thế nào nên việc sử dụng interface là chính xác.
+
+Tuy nhiên nếu thay đổi lại yêu cầu, lúc này thay vì quản lý tất cả các loại xe lưu thông, ta chỉ quản lý các loại xe sử dụng động cơ đốt trong 4 bánh.
+
+Với bài toán này việc bạn cũng sẽ thiết kế một `interface Vehicle` chung nhất mà các class khác sau này sẽ implements nó (`Truck`, `Car`).
+
+Lúc này bạn tạo ra một interface Cars với 3 phương thức: `drive()`, `stop()`, và `refuel()`. Tạm thời bạn sẽ để trống nội dung của các function trên để làm sau:
+
 ```php
 interface Vehicle {
     public function drive();
     public function stop();
     public function refuel();
 }
+```
 
+Tiếp theo bạn tạo ra 2 class implements `interface Vehicle` là `Trucks` và `Car`:
+
+```php
 class Trucks implements Vehicle {
     public function drive() {
         echo "Xe được lái bằng vô lăng";
@@ -25,52 +38,11 @@ class Trucks implements Vehicle {
     }
 
     public function refuel() {
-        echo "Sử dụng xăng";
+        echo "Sử dụng dầu";
     }
 }
 
-class Bike implements Vehicle {
-    public function drive() {
-        echo "Xe được lái bằng hai tay cầm";
-    }
-
-    public function stop() {
-        echo "Xe dừng bằng phanh tay";
-    }
-
-    public function refuel() {
-        echo "Không cần tiếp nhiên liệu, ăn cơm no là được";
-    }
-}
-```
-Bài toán này là ổn vì ta không biết phải khai báo các phương thức `drive()`, `stop()`, và `refuel()` như thế nào nên việc sử dụng interface là chính xác.
-
-Tuy nhiên nếu thay đổi lại lúc này thay vì quản lý tất cả các loại xe lưu thông, ta chỉ quản lý các loại xe ô tô.
-Hãy tưởng tượng bạn đang xây dựng một hệ thống cho các loại xe (Cars, Bikes). Mỗi loại xe có thể có phương thức `drive()`, `stop()`, và `refuel()`.
-
-Với bài toán này việc bạn cần làm là thiết kế một `class Vehicle` chung nhất và các class khác sau này sẽ kế thừa (`Car`, `Bikes`).
-Lúc này bạn tạo ra một lớp Cars với 3 phương thức: `drive()`, `stop()`, và `refuel()`. Tạm thời bạn sẽ để trống nội dung của các function trên để làm sau:
-
-```php
-class Vehicle {
-    public function drive() {
-        //TODO
-    };
-
-    public function stop() {
-        //TODO
-    };
-
-    public function refuel() {
-        //TODO
-    };
-}
-```
-
-Tiếp theo bạn tạo ra 2 class kế thừa là `Trucks` và `Bikes`:
-
-```php
-class Trucks extends Vehicle {
+class Car implements Vehicle {
     public function drive() {
         echo "Xe được lái bằng vô lăng";
     }
@@ -83,90 +55,72 @@ class Trucks extends Vehicle {
         echo "Sử dụng xăng";
     }
 }
-
-class Bike extends Vehicle {
-    public function drive() {
-        echo "Xe được lái bằng hai tay cầm";
-    }
-
-    public function stop() {
-        echo "Xe dừng bằng phanh tay";
-    }
-
-    public function refuel() {
-        echo "Không cần tiếp nhiên liệu, ăn cơm no là được";
-    }
-}
 ```
 
-Lúc này mọi việc vẫn tốt và bạn quay lại để làm nốt phần còn lại của `class Vehicle`. Tuy nhiên khi tiếp tục bạn nhận ra một vấn đề, bạn biết rằng mỗi loại xe sẽ thực hiện 3 hành động, nhưng hành động chúng sẽ khác nhau và tại lớp `class Vehicle` bạn không biết dùng hành động nào làm hành động chung cho các class con của nó, nếu dùng bất kỳ một hành động của loại xe nào làm đại diện thì cũng không hề hợp lý, đây là lý do vì sau chúng ta nên sử dụng `Interface`. Với interface bạn chỉ cần chỉ ra các class con sẽ cần khai báo bao nhiêu thứ mà không cần nêu ra chi tiết của chúng ngay tại tại `Interface`.
+Lúc này mọi việc vẫn tốt và bạn quay lại để làm nốt phần còn lại của `class Vehicle`. Tuy nhiên khi tiếp tục bạn nhận ra một vấn đề, bạn biết rằng mỗi loại xe sẽ thực hiện 3 hành động khác nhau. Tuy nhiên chúng ta gặp vấn đề sau:
+- Hành động `drive` cho tất cả các loại ở trên đều là `Xe được lái bằng vô lăng`. 
+- Hành động `stop` cho tất cả các loại ở trên đều là `"Xe dừng bằng phanh chân`.
+- Hành động `refuel` với các xe là khác nhau.
+Vấn đề này đặt ra 2 cách giải quyết
+- Khai báo `Vehicle` là `class`: Bạn sẽ có thể viết phương thức chung cho `drive` và `stop`. Nhưng không có hàm `refuel` chung cho tất cả.
+- Khai báo `Vehicle` là `interface`: Bạn sẽ phải khai báo lại hàm `drive` và `stop` cho tất cả các class đã `implements`. Sẽ tất tốn thời gian nếu số class trên tăng lên.
+
+Để giải quyết vấn đề trên người ta thường dùng `abstract class`. Hiểu đơn giản `abstract class` cho phép chúng ta khai báo đầy đủ nội dung hàm hoặc không. Nó giống như một sự kết hợp linh hoạt giữa interface và class thông thường.
 
 ### Ví Dụ Thực Tế
 
-Tiếp tục với ví dụ về hệ thống các loại xe, hãy tưởng tượng bạn muốn thêm một số phương thức chung mà tất cả các loại xe sẽ sử dụng. Chúng ta có thể sử dụng một abstract class để định nghĩa các phương thức này.
-
-### Ví Dụ Cụ Thể
+Bạn nhận thấy tất cả các loại xe có chung 2 phương thức như nhau là `drive` và `stop` vì vậy chúng sẽ được định nghĩa bên trong Vehicle như một phương thức bình thường trong các class.
+Ngược lại `refuel` thì sẽ chỉ định nghĩa tên hàm. Để phân biệt chúng ta có những phương thức chỉ định nghĩa tên sẽ có từ khóa `abstract` ở đầu tiên.
 
 ```php
 abstract class Vehicle {
-    public function startEngine() {
-        echo "Engine started\n";
+    public function drive() {
+        echo "Xe được lái bằng vô lăng";
     }
 
-    abstract public function drive();
-    abstract public function stop();
+    public function stop() {
+        echo "Xe dừng bằng phanh chân";
+    }
+
     abstract public function refuel();
 }
 
+class Truck extends Vehicle {
+    public function refuel() {
+        echo "Sử dụng dầu";
+    }
+}
+
 class Car extends Vehicle {
-    public function drive() {
-        echo "Car is driving\n";
-    }
-
-    public function stop() {
-        echo "Car has stopped\n";
-    }
-
     public function refuel() {
-        echo "Refueling car\n";
+        echo "Sử dụng xăng";
     }
 }
 
-class Bike extends Vehicle {
-    public function drive() {
-        echo "Bike is driving\n";
-    }
-
-    public function stop() {
-        echo "Bike has stopped\n";
-    }
-
-    public function refuel() {
-        echo "Refueling bike\n";
-    }
-}
+$truck = new Trucks();
+$truck->drive();         // Output: Xe được lái bằng vô lăng
+$truck->refuel();        // Output: Sử dụng dầu
 
 $car = new Car();
-$car->startEngine();  // Output: Engine started
-$car->drive();        // Output: Car is driving
-
-$bike = new Bike();
-$bike->startEngine();  // Output: Engine started
-$bike->drive();        // Output: Bike is driving
+$car->drive();          // Output: Xe được lái bằng vô lăng
+$car->drive();          // Output: Sử dụng xăng
 ```
 
-## So Sánh Interface và Abstract Class
+### Các đặc điểm của Abstract
+#### Một `class` chỉ có thể kế thừa một `abstract class` thông qua từ khóa `extends`.
+Việc chỉ cho phép kế thừa một `abstract class` nhằm các mục đích sau:
 
-| Đặc Điểm    | Interface                                             | Abstract Class                                              |
-| --------------- | --------------------------------------------------------- | --------------------------------------------------------------- |
-| Mục Đích    | Định nghĩa các phương thức mà lớp phải triển khai         | Định nghĩa các phương thức và có thể cung cấp định nghĩa cơ bản |
-| Kế Thừa     | Một lớp có thể triển khai nhiều interface                 | Một lớp chỉ có thể kế thừa một abstract class                   |
-| Phương Thức | Chỉ chứa các phương thức trừu tượng (không có định nghĩa) | Có thể chứa cả phương thức trừu tượng và phương thức cụ thể     |
-| Thuộc Tính  | Không thể chứa thuộc tính                                 | Có thể chứa thuộc tính                                          |
+- **Một lớp cha duy nhất:** Nếu một lớp có thể kế thừa từ nhiều lớp cha, sẽ xảy ra xung đột khi các lớp cha này có cùng một phương thức hoặc thuộc tính với tên giống nhau nhưng định nghĩa khác nhau. Lớp con sẽ không biết nên sử dụng định nghĩa nào, dẫn đến sự mơ hồ và lỗi trong chương trình.
+- **Cấu trúc rõ ràng:** Việc giới hạn một lớp chỉ có một lớp cha giúp cho cấu trúc kế thừa trở nên đơn giản và dễ hiểu hơn. Mỗi lớp con sẽ có một nguồn gốc rõ ràng và dễ dàng truy vết.
 
-## Kết Luận
+#### Abstract Class không có thuộc tính
 
-- Interface hữu ích khi bạn muốn đảm bảo rằng các lớp khác nhau triển khai một tập hợp các phương thức cụ thể.
-- Abstract class hữu ích khi bạn muốn cung cấp một số chức năng cơ bản mà các lớp con có thể kế thừa và mở rộng.
+Giống như một class thông thường `abstract class` cũng có thuộc tính. Cách khai báo và sử dụng giống như class thông thường.
 
-Hy vọng rằng với những ví dụ liên hệ thực tế này, học sinh của bạn sẽ hiểu rõ hơn về cách sử dụng interface và abstract class trong PHP.
+#### Tất cả các phương thức trong abstract class là public hoặc protected
+Abstrac Class được thiết kế với mục đích có ít nhất 1 lớp kế thừa nó vì vậy tất cả các phương thức trong abstract class là public hoặc protected.
+
+**Vậy tại sao không phải là private?**
+
+Không thể override: Nếu một phương thức được khai báo là private, nó chỉ có thể được truy cập từ bên trong lớp và không thể được override bởi các lớp con. Điều này sẽ làm giảm tính linh hoạt của abstract class và hạn chế khả năng kế thừa.
+Mất đi tính đa hình: Nếu không thể override các phương thức, chúng ta sẽ không thể tận dụng được tính đa hình của OOP trong abstract class.

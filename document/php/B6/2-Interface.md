@@ -6,10 +6,10 @@
 
 ### Liên hệ thực tế
 
-Hãy tưởng tượng bạn đang xây dựng một hệ thống cho các loại xe (Cars, Bikes). Mỗi loại xe có thể có phương thức `drive()`, `stop()`, và `refuel()`.
+Hãy tưởng tượng bạn đang xây dựng một hệ thống cho các loại phương tiên giao thông (Truck, Bikes). Mỗi loại phương tiện có thể có phương thức `drive()`, `stop()`, và `refuel()`.
 
-Với bài toán này việc bạn cần làm là thiết kế một `class Vehicle` chung nhất và các class khác sau này sẽ kế thừa (`Car`, `Bikes`).
-Lúc này bạn tạo ra một lớp Cars với 3 phương thức: `drive()`, `stop()`, và `refuel()`. Tạm thời bạn sẽ để trống nội dung của các function trên để làm sau:
+Với bài toán này việc bạn cần làm là thiết kế một `class Vehicle` chung nhất và các class khác sau này sẽ kế thừa (`Vehicle`, `Bikes`).
+Lúc này bạn tạo ra một lớp `Vehicle` với 3 phương thức: `drive()`, `stop()`, và `refuel()`. Tạm thời bạn sẽ để trống nội dung của các function trên để làm sau:
 
 ```php
 class Vehicle {
@@ -30,7 +30,7 @@ class Vehicle {
 Tiếp theo bạn tạo ra 2 class kế thừa là `Trucks` và `Bikes`:
 
 ```php
-class Trucks extends Vehicle {
+class Truck extends Vehicle {
     public function drive() {
         echo "Xe được lái bằng vô lăng";
     }
@@ -59,9 +59,9 @@ class Bike extends Vehicle {
 }
 ```
 
-Lúc này mọi việc vẫn tốt và bạn quay lại để làm nốt phần còn lại của `class Vehicle`. Tuy nhiên khi tiếp tục bạn nhận ra một vấn đề, bạn biết rằng mỗi loại xe sẽ thực hiện 3 hành động, nhưng hành động chúng sẽ khác nhau và tại lớp `class Vehicle` bạn không biết dùng hành động nào làm hành động chung cho các class con của nó, nếu dùng bất kỳ một hành động của loại xe nào làm đại diện thì cũng không hề hợp lý, đây là lý do vì sau chúng ta nên sử dụng `Interface`. Với interface bạn chỉ cần chỉ ra các class con sẽ cần khai báo bao nhiêu thứ mà không cần nêu ra chi tiết của chúng ngay tại tại `Interface`.
+Lúc này mọi việc vẫn tốt và bạn quay lại để làm nốt phần còn lại của `class Vehicle`. Tuy nhiên khi tiếp tục bạn nhận ra một vấn đề, bạn biết rằng mỗi loại xe sẽ thực hiện 3 hành động, nhưng hành động chúng sẽ khác nhau và tại lớp `class Vehicle` bạn không biết dùng hành động nào làm hành động chung cho các class con của nó, nếu dùng bất kỳ một hành động của loại xe nào làm đại diện thì cũng không hề hợp lý, đây là lý do vì sau chúng ta nên sử dụng interface. Với interface bạn chỉ cần chỉ ra các class con sẽ cần khai báo bao nhiêu thứ mà không cần nêu ra chi tiết của chúng ngay tại tại interface.
 
-### Ví Dụ Thực Tế với trường hợp trên
+### Ví Dụ thực tế với trường hợp trên
 
 Hãy tưởng tượng bạn đang xây dựng một hệ thống cho các loại xe (Cars, Bikes). Mỗi loại xe có thể có phương thức `drive()`, `stop()`, và `refuel()`. Chúng ta có thể định nghĩa một interface để buộc tất cả các loại xe phải triển khai các phương thức này.
 
@@ -72,7 +72,7 @@ interface Vehicle {
     public function refuel();
 }
 
-class Trucks implements Vehicle {
+class Truck implements Vehicle {
     public function drive() {
         echo "Xe được lái bằng vô lăng";
     }
@@ -100,14 +100,14 @@ class Bike implements Vehicle {
     }
 }
 
-$car = new Car();
-$car->drive();  // Output: Car is driving
+$truck = new Truck();
+$truck->drive();  // Output: Xe được lái bằng vô lăng
 
 $bike = new Bike();
-$bike->drive();  // Output: Bike is driving
+$bike->drive();  // Output: Xe được lái bằng hai tay cầm
 ```
 ### Các đặc điểm của Interface
-#### Một lớp có thể triển khai nhiều interface thông qua từ khóa `implements`.
+#### Một `class` có thể triển khai nhiều `interface` thông qua từ khóa `implements`.
 
 Giả sử chúng ta đang xây dựng một hệ thống quản lý thư viện.
 
