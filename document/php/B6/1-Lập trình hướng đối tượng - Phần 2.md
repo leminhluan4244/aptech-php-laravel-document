@@ -27,7 +27,25 @@
 
 - **Hàm khởi tạo (Constructor)**: Đây là một phương thức đặc biệt, nó sẽ được gọi ngay sau khi đối tượng của lớp đó được tạo ra. Thông thường trong hàm khởi tạo chúng ta sẽ khởi tạo các **thuộc tính** của đối tượng để có thể sử dụng khi cần thiết.
 
+
 - **Hàm hủy (Destructor)**: Ngược lại với hàm khởi tạo, hàm hủy có tác dụng giải phóng tài nguyên mà đối tượng đã sử dụng. Hàm này được gọi sau khi đối tượng bị xóa bỏ khỏi bộ nhớ.
+
+
+```php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function __destruct() {
+    echo "The fruit is {$this->name}."; 
+  }
+}
+
+$apple = new Fruit("Apple");
+```
 
 ### Who (Ai sẽ sử dụng OOP?)
 
@@ -73,6 +91,10 @@ class Car {
         return "My car is a " . $this->color . " " . $this->model . ".";
     }
 }
+
+$car = new Car('RED', '2022');
+$str = $car->message();
+echo $str;
 ```
 
 #### `Tạo đối tượng (Object)`
@@ -80,11 +102,14 @@ class Car {
 Đối tượng là một `thể hiện` của một `lớp`, có thể có các giá trị khác nhau cho các thuộc tính của nó.
 
 ```php
+// ...
 $myCar = new Car("black", "Volvo");
 echo $myCar->message(); // Outputs: My car is a black Volvo.
 
+echo "<hr>";
+
 $youCar = new Car("white", "Tesla");
-echo $myCar->message(); // Outputs: My car is a black Volvo.
+echo $youCar->message(); // Outputs: My car is a white Tesla.
 ```
 
 #### `Tính kế thừa (Inheritance)`
@@ -109,6 +134,9 @@ class ElectricCar extends Car {
 
 }
 // Bạn có thể tạo mới class ElectricCar và gọi các phương thức mà nó được kế thừa từ Car.
+$myCar = new ElectricCar("white", "Tesla");
+$myCar->batteryLife = 5;
+echo $myCar->batteryStatus();
 ```
 
 #### `Tính đa hình (Polymorphism)`
@@ -124,25 +152,33 @@ class Vehicle {
     }
 }
 
-class Bike implements Vehicle {
+class Bike extends Vehicle {
     public function move() {
         return "The bike is moving.";
     }
 }
 
-class Bus implements Vehicle {
+class Bus extends Vehicle {
     public function move() {
         return "The bus is moving.";
     }
 }
+
+$myBike = new Bike();
+echo $myBike->move();
+
+echo "<hr>";
+
+$myBus = new Bus();
+echo $myBus->move();
 ```
 
 #### `Tính đóng gói (encapsulation)`
 
 Tính đóng gói là tính chất không cho phép người dùng hay đối tượng khác thay đổi dữ liệu thành viên của đối tượng nội tại. Chỉ có các hàm thành viên của đối tượng đó mới có quyền thay đổi trạng thái nội tại của nó mà thôi. Các đối tượng khác muốn thay đổi thuộc tính thành viên của đối tượng nội tại, thì chúng cần truyền thông điệp cho đối tượng, và việc quyết định thay đổi hay không vẫn do đối tượng nội tại quyết định.
 
-Trong PHP việc đóng gói được thực hiện nhờ sử dụng các mức độ `visibility` với các từ khoá `public`, `private` và `protected`:
-Trong lập trình hướng đối tượng (OOP) với PHP, tính đóng gói (encapsulation) là một khái niệm quan trọng. Tính đóng gói cho phép bạn kiểm soát khả năng truy cập và sửa đổi các thuộc tính và phương thức của một đối tượng từ bên ngoài lớp. PHP hỗ trợ ba mức độ truy cập (visibility) chính: `public`, `protected`, và `private`. Dưới đây là phần giới thiệu chi tiết về các mức độ truy cập này.
+Trong PHP việc đóng gói được thực hiện nhờ sử dụng các mức độ `Access Modifiers` với các từ khoá `public`, `private` và `protected`:
+Trong lập trình hướng đối tượng (OOP) với PHP, tính đóng gói (encapsulation) là một khái niệm quan trọng. Tính đóng gói cho phép bạn kiểm soát khả năng truy cập và sửa đổi các thuộc tính và phương thức của một đối tượng từ bên ngoài lớp. PHP hỗ trợ ba mức độ truy cập (acces modifiers) chính: `public`, `protected`, và `private`. Dưới đây là phần giới thiệu chi tiết về các mức độ truy cập này.
 
 ##### **Public**
 
@@ -161,6 +197,7 @@ class MyClass {
 
 $object = new MyClass();
 echo $object->publicProperty;  // Truy cập thuộc tính public
+echo '<hr>';
 $object->publicMethod();       // Gọi phương thức public
 ```
 
@@ -172,10 +209,10 @@ Ví dụ:
 
 ```php
 class MyClass {
-    protected $protectedProperty = 'I am protected';
+    protected $protectedProperty = 'I am protected <br>';
 
     protected function protectedMethod() {
-        echo "This is a protected method.";
+        echo "This is a protected method. <br>";
     }
 
     public function accessProtected() {
@@ -196,6 +233,8 @@ class ChildClass extends MyClass {
 $object = new MyClass();
 $object->accessProtected();  // OK
 
+echo "<hr>";
+
 $childObject = new ChildClass();
 $childObject->accessParentProtected();  // OK
 
@@ -212,10 +251,10 @@ Ví dụ
 
 ```php
 class MyClass {
-    private $privateProperty = 'I am private';
+    private $privateProperty = 'I am private <br>';
 
     private function privateMethod() {
-        echo "This is a private method.";
+        echo "This is a private method. <br>";
     }
 
     public function accessPrivate() {
@@ -235,7 +274,7 @@ $object->accessPrivate();
 
 **Bảng So Sánh**
 
-| Visibility | Truy cập từ chính lớp | Truy cập từ lớp con | Truy cập từ bên ngoài |
+| Access Modifiers | Truy cập từ chính lớp | Truy cập từ lớp con | Truy cập từ bên ngoài |
 | ---------- | --------------------- | ------------------- | --------------------- |
 | Public     | ✔️                    | ✔️                  | ✔️                    |
 | Protected  | ✔️                    | ✔️                  | ❌                    |
