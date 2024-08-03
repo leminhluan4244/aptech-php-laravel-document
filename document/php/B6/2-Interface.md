@@ -1,6 +1,6 @@
 ## Interface trong PHP
 
-### Định Nghĩa
+### Định nghĩa
 
 - Interface là một tập hợp các phương thức trừu tượng (chỉ khai báo, không có định nghĩa) mà các lớp phải triển khai.
 
@@ -106,7 +106,9 @@ $truck->drive();  // Output: Xe được lái bằng vô lăng
 $bike = new Bike();
 $bike->drive();  // Output: Xe được lái bằng hai tay cầm
 ```
+
 ### Các đặc điểm của Interface
+
 #### Một `class` có thể triển khai nhiều `interface` thông qua từ khóa `implements`.
 
 Giả sử chúng ta đang xây dựng một hệ thống quản lý thư viện.
@@ -171,6 +173,7 @@ Lợi ích của việc sử dụng nhiều interface:
 - Tăng tính đọc hiểu: Code sẽ trở nên rõ ràng và dễ hiểu hơn.
 
 Lưu ý:
+
 - Một lớp có thể implements nhiều interface, nhưng chỉ kế thừa từ một lớp cha duy nhất.
 
 Kết luận:
@@ -226,6 +229,7 @@ class Book implements Searchable, Rentable {
     }
 }
 ```
+
 #### Interface không có thuộc tính
 
 **Interface** trong PHP được thiết kế để định nghĩa một hợp đồng (contract) mà các lớp khác phải tuân thủ. Nó giống như một bản kế hoạch chi tiết về các phương thức mà một đối tượng phải thực hiện. **Không có thuộc tính mặc định** trong interface vì lý do sau:
@@ -284,5 +288,6 @@ class Circle implements Shape {
 Bằng cách này, lớp `Circle` có thể tự do quyết định màu sắc của mình.
 
 #### Tất cả các phương thức trong interface là public
+
 Trong ngữ cảnh của interface, việc sử dụng protected hoặc private là không cần thiết. Protected thường được sử dụng trong các lớp để bảo vệ dữ liệu và phương thức khỏi sự truy cập từ bên ngoài, nhưng interface không có dữ liệu để bảo vệ.
 Private cũng có nguyên nhân tương tự, interface không phải là một lớp hoàn chỉnh, nó chỉ cung cấp một bản thiết kế. Việc khai báo một phương thức là private sẽ đi ngược lại với mục đích này, vì phương thức private chỉ có thể được truy cập từ bên trong lớp.

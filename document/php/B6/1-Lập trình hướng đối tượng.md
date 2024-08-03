@@ -1,3 +1,5 @@
+## Cơ bản về lập trình hướng đối tượng
+
 ### What (OOP là gì?)
 
 `OOP` viết tắt của Object-Oriented Programming – Lập trình hướng đối tượng ra đời giải quyết các vấn đề mà lập trình truyền thống gặp phải. Lập trình hướng đối tượng không chỉ đơn giản là các cú pháp, câu lệnh mới mà còn là một cách tư duy mới khi giải quyết một vấn đề.
@@ -20,16 +22,12 @@
 **Thuộc tính và phương thức**
 
 - **Thuộc tính (Properties/Attribute)**: Đây là các **biến** dùng để lưu trữ dữ liệu và chúng được định nghĩa ở trong lớp. Tên thuộc tính thường là các **tính từ** hoặc **danh từ**.
-
 - **Phương thức (Method)**: Đây là các **hàm** để thực hiện một chức năng nhất định có liên quan đến đối tượng và chúng cũng được định nghĩa ở trong lớp. Tên của phương thức thường là **động từ**.
 
 **Hàm khởi tạo (Constructor) và Hàm hủy (Destructor)**
 
 - **Hàm khởi tạo (Constructor)**: Đây là một phương thức đặc biệt, nó sẽ được gọi ngay sau khi đối tượng của lớp đó được tạo ra. Thông thường trong hàm khởi tạo chúng ta sẽ khởi tạo các **thuộc tính** của đối tượng để có thể sử dụng khi cần thiết.
-
-
 - **Hàm hủy (Destructor)**: Ngược lại với hàm khởi tạo, hàm hủy có tác dụng giải phóng tài nguyên mà đối tượng đã sử dụng. Hàm này được gọi sau khi đối tượng bị xóa bỏ khỏi bộ nhớ.
-
 
 ```php
 class Fruit {
@@ -37,14 +35,68 @@ class Fruit {
   public $color;
 
   function __construct($name) {
-    $this->name = $name; 
+    $this->name = $name;
   }
   function __destruct() {
-    echo "The fruit is {$this->name}."; 
+    echo "The fruit is {$this->name}.";
   }
 }
 
 $apple = new Fruit("Apple");
+```
+
+**Từ khoá `this`**
+
+- `this` là một từ khóa đặc biệt trong PHP, được sử dụng bên trong một lớp để tham chiếu đến đối tượng hiện tại của lớp đó.
+- Nó cho phép truy cập đến các thuộc tính và phương thức của đối tượng hiện tại.
+
+```php
+class Car {
+    public $model;
+    public $year;
+
+    public function __construct($model, $year) {
+        $this->model = $model;
+        $this->year = $year;
+    }
+
+    public function displayInfo() {
+        echo "Model: " . $this->model . ", Year: " . $this->year;
+    }
+}
+
+$myCar = new Car('Toyota', 2021);
+$myCar->displayInfo();  // Output: Model: Toyota, Year: 2021
+```
+
+**Từ khóa `instanceof`**
+
+- `instanceof` là một toán tử trong PHP được sử dụng để kiểm tra xem một đối tượng có phải là một instance (thực thể) của một lớp hoặc một interface cụ thể hay không.
+
+```php
+class Car
+{
+    public $model;
+    public $year;
+
+    public function __construct($model, $year)
+    {
+        $this->model = $model;
+        $this->year = $year;
+    }
+
+    public function displayInfo()
+    {
+        echo "Model: " . $this->model . ", Year: " . $this->year;
+    }
+}
+
+$myCar = new Car('Toyota', 2021);
+if ($myCar instanceof Car) {
+    echo "Đây là đối tượng của lớp Car";
+} else {
+    echo "Đây không phải là đối tượng của lớp Car";
+}
 ```
 
 ### Who (Ai sẽ sử dụng OOP?)
@@ -177,7 +229,7 @@ echo $myBus->move();
 
 Tính đóng gói là tính chất không cho phép người dùng hay đối tượng khác thay đổi dữ liệu thành viên của đối tượng nội tại. Chỉ có các hàm thành viên của đối tượng đó mới có quyền thay đổi trạng thái nội tại của nó mà thôi. Các đối tượng khác muốn thay đổi thuộc tính thành viên của đối tượng nội tại, thì chúng cần truyền thông điệp cho đối tượng, và việc quyết định thay đổi hay không vẫn do đối tượng nội tại quyết định.
 
-Trong PHP việc đóng gói được thực hiện nhờ sử dụng các mức độ `Access Modifiers` với các từ khoá `public`, `private` và `protected`:
+Trong PHP việc đóng gói được thực hiện nhờ sử dụng các mức độ `Access Modifiers` (một số hướng dẫn có thể gọi là `visibility`) với các từ khoá `public`, `private` và `protected`:
 Trong lập trình hướng đối tượng (OOP) với PHP, tính đóng gói (encapsulation) là một khái niệm quan trọng. Tính đóng gói cho phép bạn kiểm soát khả năng truy cập và sửa đổi các thuộc tính và phương thức của một đối tượng từ bên ngoài lớp. PHP hỗ trợ ba mức độ truy cập (acces modifiers) chính: `public`, `protected`, và `private`. Dưới đây là phần giới thiệu chi tiết về các mức độ truy cập này.
 
 ##### **Public**
@@ -275,10 +327,10 @@ $object->accessPrivate();
 **Bảng So Sánh**
 
 | Access Modifiers | Truy cập từ chính lớp | Truy cập từ lớp con | Truy cập từ bên ngoài |
-| ---------- | --------------------- | ------------------- | --------------------- |
-| Public     | ✔️                    | ✔️                  | ✔️                    |
-| Protected  | ✔️                    | ✔️                  | ❌                    |
-| Private    | ✔️                    | ❌                  | ❌                    |
+| ---------------- | --------------------- | ------------------- | --------------------- |
+| Public           | ✔️                    | ✔️                  | ✔️                    |
+| Protected        | ✔️                    | ✔️                  | ❌                    |
+| Private          | ✔️                    | ❌                  | ❌                    |
 
 #### `Tính trừu tượng (abstraction)`
 
