@@ -31,7 +31,7 @@ class NguoiLon extends ConNguoi
 //Fatal error: Class NguoiLon may not inherit from final class (ConNguoi)
 ```
 
-- **Final phương thức**: Khi chúng ta khai báo một phương thức là final thì không có một phương thức nào có thể override(ghi đè lại được).
+- **Final phương thức**: Khi chúng ta khai báo một phương thức là final thì không có một phương thức nào có thể override (ghi đè lại được).
 
 Cú pháp: khai báo một phương thức final.
 

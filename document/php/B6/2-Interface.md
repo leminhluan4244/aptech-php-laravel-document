@@ -287,7 +287,7 @@ class Circle implements Shape {
 
 Bằng cách này, lớp `Circle` có thể tự do quyết định màu sắc của mình.
 
-#### Tất cả các phương thức trong interface là public
+#### Tất cả các phương thức trong interface là `public`
 
 Trong ngữ cảnh của interface, việc sử dụng protected hoặc private là không cần thiết. Protected thường được sử dụng trong các lớp để bảo vệ dữ liệu và phương thức khỏi sự truy cập từ bên ngoài, nhưng interface không có dữ liệu để bảo vệ.
 Private cũng có nguyên nhân tương tự, interface không phải là một lớp hoàn chỉnh, nó chỉ cung cấp một bản thiết kế. Việc khai báo một phương thức là private sẽ đi ngược lại với mục đích này, vì phương thức private chỉ có thể được truy cập từ bên trong lớp.

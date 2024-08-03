@@ -1,4 +1,4 @@
-## Namespace
+## Namespace trong PHP
 
 ### Namespace là gì ?
 
