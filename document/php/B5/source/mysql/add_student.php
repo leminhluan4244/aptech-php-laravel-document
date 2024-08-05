@@ -10,8 +10,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$classes = $result = mysqli_query($conn, "SELECT *FROM classes");
-$classes=mysqli_fetch_all($classes);
+$classes = mysqli_query($conn, "SELECT *FROM classes");
+$classes = mysqli_fetch_all($classes);
 
 // Kiểm tra xem có dữ liệu được gửi từ form không
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -134,7 +134,7 @@ class Pi
     public static $value = 3.14159;
 }
 
-class Circle extends pi
+class Circle extends Pi
 {
     public function circleStatic()
     {
