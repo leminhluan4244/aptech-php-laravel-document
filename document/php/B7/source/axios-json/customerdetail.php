@@ -1,12 +1,4 @@
 <?php
-//Passing the credentials to access the database
-$db_host = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_name = "test01";
-//Establishing the connection
-$con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
 // Kết nối đến cơ sở dữ liệu
 $host = "localhost:3306";
 $username = "root";
@@ -15,7 +7,7 @@ $database = "test01";
 $conn = mysqli_connect($host, $username, $password, $database);
 
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+  die("Connection failed: " . mysqli_connect_error());
 }
 
 $bill = $_GET['bill'];
