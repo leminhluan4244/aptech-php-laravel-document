@@ -157,6 +157,8 @@ DB_PASSWORD=
 **1. Tạo model:**
 Tạo một controller mới tên là `Post` trong thư mục `app/Model`.
 
+> Lưu ý rằng tên class và tên file phải trùng nhau, tên namsespace cũng phải theo đúng cấu trúc thư mục
+
 ```php
 <?php
 
@@ -200,6 +202,8 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 **3. Tạo controller:**
 
 Tạo một controller mới tên là `PostController` trong thư mục `app/Http/Controllers`.
+
+> Lưu ý rằng tên class và tên file phải trùng nhau, tên namsespace cũng phải theo đúng cấu trúc thư mục
 
 ```php
 <?php
