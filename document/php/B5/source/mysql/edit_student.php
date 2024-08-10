@@ -11,27 +11,27 @@ if (!$conn) {
 }
 
 $classes = $result = mysqli_query($conn, "SELECT *FROM classes");
-$classes=mysqli_fetch_all($classes);
+$classes = mysqli_fetch_all($classes);
 
 // Lấy ID sinh viên cần sửa từ URL
 $student_id = $_GET['id'];
 
 // Kiểm tra xem có dữ liệu được gửi từ form không
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if($_POST['student_name'] != "" || $_POST['birth_date'] != "") {
+    if ($_POST['student_name'] != "" || $_POST['birth_date'] != "") {
         $student_name = $_POST['student_name'];
         $birth_date = $_POST['birth_date'];
         $gender = $_POST['gender'];
         $class_id = $_POST['class_id'];
-    
+
         // Chuẩn bị câu lệnh SQL để cập nhật sinh viên
-        $sql = "UPDATE students SET 
+        $sql = "UPDATE students SET
                 student_name = '$student_name',
                 birth_date = '$birth_date',
                 gender = '$gender',
                 class_id = $class_id
                 WHERE student_id = $student_id";
-    
+
         if (mysqli_query($conn, $sql)) {
             echo '<h3 style="color:blue">Thông tin sinh viên đã được cập nhật</h3>';
         } else {
@@ -69,24 +69,32 @@ mysqli_close($conn);
     </style>
 </head>
 <body>
-    <h2>Thêm mới sinh viên</h2>
+    <h2>Sửa thông tin sinh viên</h2>
     <form method="post">
+    <input hidden type="text" name="student_id" value=<?php echo $student['student_id'] ?>">
+
     <table>
             <tr>
                 <td>Tên sinh viên:</td>
-                <td><input type="text" name="student_name" value="<?php echo $student['student_name']?>"></td>
+                <td><input type="text" name="student_name" value="<?php echo $student['student_name'] ?>"></td>
             </tr>
             <tr>
                 <td>Ngày sinh:</td>
-                <td><input type="date" name="birth_date" value="<?php echo $student['birth_date']?>"></td>
+                <td><input type="date" name="birth_date" value="<?php echo $student['birth_date'] ?>"></td>
             </tr>
             <tr>
                 <td>Giới tính:</td>
-                
+
                 <td>
                     <select name="gender">
-                        <option value="Nam" <?php if($student['gender'] == "Nam") echo "selected"; ?> >Nam</option>
-                        <option value="Nữ" <?php if($student['gender'] == "Nữ") echo "selected"; ?> >Nữ</option>
+                        <option value="Nam" <?php if ($student['gender'] == "Nam") {
+    echo "selected";
+}
+?> >Nam</option>
+                        <option value="Nữ" <?php if ($student['gender'] == "Nữ") {
+    echo "selected";
+}
+?> >Nữ</option>
                     </select>
                 </td>
             </tr>
@@ -96,15 +104,15 @@ mysqli_close($conn);
                 <td>
                     <select name="class_id">
                     <?php
-                        foreach($classes as $row) {
-                            if($student['class_id'] == $row[0]){
-                                echo '<option value="'.$row[0].'" selected>'.$row[1].'</option>';
-                            } else {
-                                echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-                            }
-                            
-                        }
-                    ?>
+foreach ($classes as $row) {
+    if ($student['class_id'] == $row[0]) {
+        echo '<option value="' . $row[0] . '" selected>' . $row[1] . '</option>';
+    } else {
+        echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+    }
+
+}
+?>
                     </select>
                 </td>
             </tr>
@@ -113,7 +121,7 @@ mysqli_close($conn);
             </tr>
         </table>
     </form>
-    
+
 
     <a href="index.php">Home</a>
 </body>
