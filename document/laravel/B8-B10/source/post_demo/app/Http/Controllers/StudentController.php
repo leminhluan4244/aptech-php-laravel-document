@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -62,7 +63,12 @@ class StudentController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $student->update($request->all());
+        $student->where('student_id', intval($request->student_id))->update([
+            "student_name" => $request->student_name,
+            "birth_date" => Carbon::parse($request->birth_date)->format('Y-m-d'),
+            "gender" => $request->gender,
+            "class_id" => intval($request->class_id),
+        ]);
 
         return redirect()->route('students.index')->with('success', 'Thông tin sinh viên đã được cập nhật');
     }
