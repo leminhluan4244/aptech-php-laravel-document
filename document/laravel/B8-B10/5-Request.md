@@ -2,21 +2,21 @@
 
 **Đối tượng Request trong Laravel** là một đại diện cho yêu cầu HTTP mà người dùng gửi đến ứng dụng của bạn. Nó chứa tất cả các thông tin liên quan đến yêu cầu đó, bao gồm:
 
-* **Dữ liệu từ form:** Thông tin mà người dùng nhập vào các trường form.
-* **Các tham số trong URL:** Các giá trị truyền qua URL.
-* **File được upload:** Các file mà người dùng tải lên.
-* **Cookie:** Dữ liệu được lưu trữ trên trình duyệt của người dùng.
-* **Header:** Các thông tin về yêu cầu như phương thức HTTP (GET, POST, PUT, DELETE...), loại nội dung, v.v.
+- **Dữ liệu từ form:** Thông tin mà người dùng nhập vào các trường form.
+- **Các tham số trong URL:** Các giá trị truyền qua URL.
+- **File được upload:** Các file mà người dùng tải lên.
+- **Cookie:** Dữ liệu được lưu trữ trên trình duyệt của người dùng.
+- **Header:** Các thông tin về yêu cầu như phương thức HTTP (GET, POST, PUT, DELETE...), loại nội dung, v.v.
 
 **Tại sao đối tượng Request lại quan trọng?**
 
-* **Truy xuất dữ liệu:** Bạn có thể dễ dàng truy xuất các thông tin từ yêu cầu để xử lý và lưu trữ.
-* **Validation:** Kiểm tra tính hợp lệ của dữ liệu đầu vào trước khi xử lý.
-* **Tương tác với các thành phần khác:** Dựa trên thông tin trong request, bạn có thể quyết định thực hiện các hành động khác nhau, chẳng hạn như định tuyến, gọi các hàm trong controller, v.v.
+- **Truy xuất dữ liệu:** Bạn có thể dễ dàng truy xuất các thông tin từ yêu cầu để xử lý và lưu trữ.
+- **Validation:** Kiểm tra tính hợp lệ của dữ liệu đầu vào trước khi xử lý.
+- **Tương tác với các thành phần khác:** Dựa trên thông tin trong request, bạn có thể quyết định thực hiện các hành động khác nhau, chẳng hạn như định tuyến, gọi các hàm trong controller, v.v.
 
 **Cách sử dụng đối tượng Request trong Laravel:**
 
-* **Injection tự động:** Laravel sẽ tự động inject đối tượng `Request` vào controller của bạn. Bạn chỉ cần khai báo nó trong phương thức của controller:
+- **Injection tự động:** Laravel sẽ tự động inject đối tượng `Request` vào controller của bạn. Bạn chỉ cần khai báo nó trong phương thức của controller:
 
 ```php
 public function store(Request $request)
@@ -27,14 +27,14 @@ public function store(Request $request)
 }
 ```
 
-* **Truy xuất dữ liệu:**
-  * **Dữ liệu form:** `$request->input('name')` hoặc `$request->name`
-  * **Tham số URL:** `$request->query('page')`
-  * **File upload:** `$request->file('avatar')`
-  * **Cookie:** `$request->cookie('remember_token')`
-  * **Header:** `$request->header('User-Agent')`
+- **Truy xuất dữ liệu:**
+  - **Dữ liệu form:** `$request->input('name')` hoặc `$request->name`
+  - **Tham số URL:** `$request->query('page')`
+  - **File upload:** `$request->file('avatar')`
+  - **Cookie:** `$request->cookie('remember_token')`
+  - **Header:** `$request->header('User-Agent')`
 
-* **Các phương thức hữu ích:**
+- **Các phương thức hữu ích:**
   * `isMethod()`: Kiểm tra phương thức HTTP (GET, POST, ...)
     ```php
         public function store(Request $request)

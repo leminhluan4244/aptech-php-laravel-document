@@ -4,9 +4,9 @@
 
 ### Tại sao cần Validation?
 
-* **Bảo mật:** Ngăn chặn các cuộc tấn công tiêm SQL, XSS và các loại tấn công khác bằng cách lọc và xác thực dữ liệu đầu vào.
-* **Tính toàn vẹn dữ liệu:** Đảm bảo rằng chỉ có dữ liệu hợp lệ được lưu vào cơ sở dữ liệu.
-* **Cải thiện trải nghiệm người dùng:** Cung cấp thông báo lỗi rõ ràng và hữu ích khi người dùng nhập liệu sai.
+- **Bảo mật:** Ngăn chặn các cuộc tấn công tiêm SQL, XSS và các loại tấn công khác bằng cách lọc và xác thực dữ liệu đầu vào.
+- **Tính toàn vẹn dữ liệu:** Đảm bảo rằng chỉ có dữ liệu hợp lệ được lưu vào cơ sở dữ liệu.
+- **Cải thiện trải nghiệm người dùng:** Cung cấp thông báo lỗi rõ ràng và hữu ích khi người dùng nhập liệu sai.
 
 ### Cách thực hiện Validation trong Laravel
 
@@ -41,16 +41,16 @@ Trong ví dụ trên:
 
 ### Các quy tắc validation phổ biến
 
-* **required:** Trường bắt buộc phải có giá trị.
-* **string:** Giá trị phải là một chuỗi.
-* **integer:** Giá trị phải là một số nguyên.
-* **email:** Giá trị phải là một địa chỉ email hợp lệ.
-* **min:n:** Độ dài tối thiểu của chuỗi hoặc số.
-* **max:n:** Độ dài tối đa của chuỗi hoặc số.
-* **between:min,max:** Giá trị phải nằm trong khoảng từ min đến max.
-* **in:value1,value2,...:** Giá trị phải nằm trong danh sách các giá trị cho trước.
-* **unique:table,column:** Kiểm tra xem giá trị có duy nhất trong một cột của bảng đã cho hay không.
-* **confirmed:** Kiểm tra xem hai trường có giá trị giống nhau hay không (thường dùng để xác nhận mật khẩu).
+- **required:** Trường bắt buộc phải có giá trị.
+- **string:** Giá trị phải là một chuỗi.
+- **integer:** Giá trị phải là một số nguyên.
+- **email:** Giá trị phải là một địa chỉ email hợp lệ.
+- **min:n:** Độ dài tối thiểu của chuỗi hoặc số.
+- **max:n:** Độ dài tối đa của chuỗi hoặc số.
+- **between:min,max:** Giá trị phải nằm trong khoảng từ min đến max.
+- **in:value1,value2,...:** Giá trị phải nằm trong danh sách các giá trị cho trước.
+- **unique:table,column:** Kiểm tra xem giá trị có duy nhất trong một cột của bảng đã cho hay không.
+- **confirmed:** Kiểm tra xem hai trường có giá trị giống nhau hay không (thường dùng để xác nhận mật khẩu).
 
 **Ngoài ra, Laravel còn hỗ trợ các quy tắc validation tùy chỉnh để đáp ứng các yêu cầu đặc biệt của ứng dụng.**
 

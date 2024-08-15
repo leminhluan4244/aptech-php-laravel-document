@@ -46,7 +46,7 @@ Chào các bạn sinh viên! Trong bài hướng dẫn này, tôi sẽ hướng 
 1. Tạo một 2 mới với tên `index.php` và `myname.php` và lưu nó vào thư mục my_project.
 1. Các phần code dưới đây được lưu ở thư mục `source/task1/my_project` của dự án này trên github bạn có thể copy để vào XAMPP và chạy thử hoặc tự gõ lệnh để dễ nhớ.
    ![File](../../../assets/image/image9.png)
-1. Thêm mã PHP sau vào tệp `index.php`:
+1. Thêm code PHP sau vào tệp `index.php`:
 
 ```php
 <?php
@@ -54,7 +54,7 @@ Chào các bạn sinh viên! Trong bài hướng dẫn này, tôi sẽ hướng 
 ?>
 ```
 
-1. Thêm mã PHP sau vào tệp `myname.php`:
+1. Thêm code PHP sau vào tệp `myname.php`:
 
 ```php
 <?php
@@ -73,12 +73,12 @@ Chào các bạn sinh viên! Trong bài hướng dẫn này, tôi sẽ hướng 
 
 **Lưu ý:**
 
-- Bạn có thể thay đổi mã PHP trong tệp `index.php` để tạo các trang web phức tạp hơn.
+- Bạn có thể thay đổi code PHP trong tệp `index.php` để tạo các trang web phức tạp hơn.
 - Tham khảo tài liệu XAMPP để biết thêm thông tin về cách sử dụng các tính năng khác nhau của XAMPP: [https://www.apachefriends.org/docs/](https://www.apachefriends.org/docs/)
 - Hãy hỏi tôi nếu bạn gặp bất kỳ vấn đề nào trong quá trình cài đặt hoặc sử dụng XAMPP.
 
 **Ngoài ra:**
 
-- Bạn có thể sử dụng các công cụ chỉnh sửa mã PHP chuyên dụng như Sublime Text, Visual Studio Code hoặc PHPStorm để viết và chỉnh sửa mã PHP dễ dàng hơn.
+- Bạn có thể sử dụng các công cụ chỉnh sửa code PHP chuyên dụng như Sublime Text, Visual Studio Code hoặc PHPStorm để viết và chỉnh sửa code PHP dễ dàng hơn.
 
 **Chúc các bạn học tập và thành công!**
