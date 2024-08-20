@@ -3,6 +3,12 @@
 
 <head>
     <title>Cập nhật sinh viên</title>
+    <style>
+        .error,
+        .required {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,33 +27,37 @@
         <input hidden type="text" name="student_id" value={{ $student->student_id }}">
         <table>
             <tr>
-                <td>Tên sinh viên:</td>
-                <td><input type="text" name="student_name" value="{{ $student->student_name }}"></td>
-                @error('student_name')
-                    <span class="error">{{ $message }}</span>
-                @enderror
+                <td>Tên sinh viên <span class="required">*</span>:</td>
+                <td>
+                    <input type="text" name="student_name" value="{{ $student->student_name }}">
+                    @error('student_name')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </td>
             </tr>
             <tr>
-                <td>Ngày sinh:</td>
-                <td><input type="date" name="birth_date" value="{{ $student->birth_date }}"></td>
-                @error('birth_date')
-                    <span class="error">{{ $message }}</span>
-                @enderror
+                <td>Ngày sinh <span class="required">*</span>:</td>
+                <td>
+                    <input type="date" name="birth_date" value="{{ $student->birth_date }}">
+                    @error('birth_date')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </td>
             </tr>
             <tr>
-                <td>Giới tính:</td>
+                <td>Giới tính <span class="required">*</span>:</td>
                 <td>
                     <select name="gender">
                         <option value="Nam" {{ $student->gender == 'Nam' ? 'selected' : '' }}>Nam</option>
                         <option value="Nữ" {{ $student->gender == 'Nữ' ? 'selected' : '' }}>Nữ</option>
                     </select>
+                    @error('gender')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </td>
-                @error('gender')
-                    <span class="error">{{ $message }}</span>
-                @enderror
             </tr>
             <tr>
-                <td>Lớp:</td>
+                <td>Lớp <span class="required">*</span>:</td>
                 <td>
                     <select name="class_id">
                         @foreach ($classes as $class)
@@ -57,16 +67,18 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('class_id')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </td>
-                @error('class_id')
-                    <span class="error">{{ $message }}</span>
-                @enderror
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Cập nhật"></td>
             </tr>
         </table>
     </form>
+
+    <a href="{{ route('students.index') }}">Trở lại</a>
 </body>
 
 </html>
