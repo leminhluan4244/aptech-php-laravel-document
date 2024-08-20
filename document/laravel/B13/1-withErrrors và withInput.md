@@ -146,6 +146,8 @@ Trong trường hợp bạn vừa mở form (đi từ màn hình khác sang ch�
 
 Bạn có thể sử dụng các hàm hỗ trợ sẵn của của Laravel (thường được gọi là helper) để dễ dàng truy xuất và hiển thị các lỗi này trong view của bạn.
 
+(Sử dụng cách này thì sẽ in tất cả các lỗi đầu tiên thành 1 list)
+
 ```php
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -157,3 +159,21 @@ Bạn có thể sử dụng các hàm hỗ trợ sẵn của của Laravel (thư
     </div>
 @endif
 ```
+
+![alt text](../../../assets/image/image33.png)
+
+Hoặc có thể hiển thị lỗi cho từng field cụ thể (Sử dụng cách này thì chỉ in 1 lỗi đầu tiên gặp phải):
+
+```php
+<div>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+    @error('name')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+```
+
+![alt text](../../../assets/image/image34.png)
